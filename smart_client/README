@@ -1,0 +1,426 @@
+SMART Python Client Library
+===========================
+
+To generate this README:
+
+    $ python generate_readme.py > README
+
+---
+
+
+class SMARTClient(oauth2.Client)
+  Establishes OAuth communication with an SMART Container, and provides access to the API.
+  
+  Method resolution order:
+      SMARTClient
+      oauth2.Client
+      oauth2.httplib2.Http
+      __builtin__.object
+  
+  Methods defined here:
+  
+  __init__(self, app_id, api_base, consumer_params, **state_vars)
+  
+  absolute_uri(self, uri)
+  
+  delete(self, uri, headers={}, **uri_params)
+      Make an OAuth-signed DELETE request to SMART Server.
+  
+  delete_scratchpad_data = c(self, *args, **kwargs)
+      DELETE /records/{record_id}/apps/{smart_app_id}/scratchpad
+      
+      Purges the scratchpad data stored in the SMART container for the selected app. If everything goes well, this call will respond with HTTP 200 status code.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#ScratchpadData
+  
+  delete_user_preferences = c(self, *args, **kwargs)
+      DELETE /users/{user_id}/apps/{smart_app_id}/preferences
+      
+      Purges the user preferences stored in the SMART container for the selected app. If everything goes well, this call will respond with HTTP 200 status code.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#UserPreferences
+  
+  exchange_token(self, verifier)
+      Exchange the client's current token (should be a request token) for an access token.
+  
+  fetch_request_token(self, params={})
+      Get a request token from the server.
+  
+  get(self, uri, body={}, headers={}, **uri_params)
+      Make an OAuth-signed GET request to SMART Server.
+  
+  get_allergies = c(self, *args, **kwargs)
+      GET /records/{record_id}/allergies/
+      
+      Get all Allergies and Allergy Exclusions for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Allergy
+  
+  get_allergy = c(self, *args, **kwargs)
+      GET /records/{record_id}/allergies/{allergy_id}
+      
+      Get one Allergy for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Allergy
+  
+  get_app_manifest = c(self, *args, **kwargs)
+      GET /apps/{descriptor}/manifest
+      
+      Returns a JSON SMART UI app manifest for the app matching {descriptor}, or 404.  Note that {descriptor} can be an app ID like "got-statins
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#AppManifest
+  
+  get_app_manifests = c(self, *args, **kwargs)
+      GET /apps/manifests/
+      
+      Returns a JSON list of all SMART UI app manifests installed on the container.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#AppManifest
+  
+  get_clinical_note = c(self, *args, **kwargs)
+      GET /records/{record_id}/clinical_notes/{clinical_note_id}
+      
+      Get one Clinical Note for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#ClinicalNote
+  
+  get_clinical_notes = c(self, *args, **kwargs)
+      GET /records/{record_id}/clinical_notes/
+      
+      Get all Clinical Notes for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#ClinicalNote
+  
+  get_container_manifest = c(self, *args, **kwargs)
+      GET /manifest
+      
+      Get manifest for a container
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#ContainerManifest
+  
+  get_demographics = c(self, *args, **kwargs)
+      GET /records/{record_id}/demographics
+      
+      Get Demographics for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Demographics
+  
+  get_document = c(self, *args, **kwargs)
+      GET /records/{record_id}/documents/{document_id}
+      
+      Allows a SMART app to request a single document. The optional `format` parameter sets the output format of the call. The possible values are `metadata`, `raw`, and `combined`. In `format=metadata` mode, the container returns metadata and desceriptors of the document in RDF-XML. In `format=combined` mode the call returns the serialized document content in addition to all the data from the `format=metadata` mode. In `format=raw` mode, SMART returns the raw document content with the proper MIME type. In the absence of a `format` parameter, the API defaults to `format=raw`.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Document
+  
+  get_documents = c(self, *args, **kwargs)
+      GET /records/{record_id}/documents/
+      
+      Returns data about all the available documents for the patient record subject to the standard filter restrictions. The optional `format` parameter sets the output format of the call. The possible values are `metadata` and `combined`. In `format=metadata` mode, the container returns metadata and desceriptors of the documents in RDF-XML. In `format=combined` mode the call returns the serialized documents' content in addition to all the data from the `format=metadata` mode. In the absence of a `format` parameter, the API defaults to `format=metadata`.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Document
+  
+  get_encounter = c(self, *args, **kwargs)
+      GET /records/{record_id}/encounters/{encounter_id}
+      
+      Get one Encounter for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Encounter
+  
+  get_encounters = c(self, *args, **kwargs)
+      GET /records/{record_id}/encounters/
+      
+      Get all Encounters for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Encounter
+  
+  get_family_history_observation = c(self, *args, **kwargs)
+      GET /records/{record_id}/family_history/{family_history_id}
+      
+      Get one Family History for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#FamilyHistory
+  
+  get_family_history_observations = c(self, *args, **kwargs)
+      GET /records/{record_id}/family_history/
+      
+      Get all Family Histories for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#FamilyHistory
+  
+  get_fulfillment = c(self, *args, **kwargs)
+      GET /records/{record_id}/fulfillments/{fulfillment_id}
+      
+      Get one Fulfillment for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Fulfillment
+  
+  get_fulfillments = c(self, *args, **kwargs)
+      GET /records/{record_id}/fulfillments/
+      
+      Get all Fulfillments for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Fulfillment
+  
+  get_imaging_studies = c(self, *args, **kwargs)
+      GET /records/{record_id}/imaging_studies/
+      
+      Returns data about all the available imaging studies of the patient record.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#ImagingStudy
+  
+  get_imaging_study = c(self, *args, **kwargs)
+      GET /records/{record_id}/imaging_studies/{imaging_study_id}
+      
+      Allows a SMART app to request a single medical imaging study.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#ImagingStudy
+  
+  get_immunization = c(self, *args, **kwargs)
+      GET /records/{record_id}/immunizations/{immunization_id}
+      
+      Get one Immunization for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Immunization
+  
+  get_immunizations = c(self, *args, **kwargs)
+      GET /records/{record_id}/immunizations/
+      
+      Get all Immunizations for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Immunization
+  
+  get_lab_panel = c(self, *args, **kwargs)
+      GET /records/{record_id}/lab_panels/
+      
+      Get one Lab Panel for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#LabPanel
+  
+  get_lab_panels = c(self, *args, **kwargs)
+      GET /records/{record_id}/lab_panels/
+      
+      Get all Lab Panels for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#LabPanel
+  
+  get_lab_result = c(self, *args, **kwargs)
+      GET /records/{record_id}/lab_results/{lab_result_id}
+      
+      Get one Lab Result for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#LabResult
+  
+  get_lab_results = c(self, *args, **kwargs)
+      GET /records/{record_id}/lab_results/
+      
+      Get all Lab Results for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#LabResult
+  
+  get_medical_image = c(self, *args, **kwargs)
+      GET /records/{record_id}/medical_images/{medical_image_id}
+      
+      Allows a SMART app to request a single medical image of the patient's body.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#MedicalImage
+  
+  get_medical_images = c(self, *args, **kwargs)
+      GET /records/{record_id}/medical_images/
+      
+      Returns data about all the available medical images of the patient's body.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#MedicalImage
+  
+  get_medication = c(self, *args, **kwargs)
+      GET /records/{record_id}/medications/{medication_id}
+      
+      Get one Medication for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Medication
+  
+  get_medications = c(self, *args, **kwargs)
+      GET /records/{record_id}/medications/
+      
+      Get all Medications for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Medication
+  
+  get_ontology = c(self, *args, **kwargs)
+      GET /ontology
+      
+      Get the ontology used by a SMART container
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Ontology
+  
+  get_photograph = c(self, *args, **kwargs)
+      GET /records/{record_id}/photograph
+      
+      Get one Photograph for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Photograph
+  
+  get_problem = c(self, *args, **kwargs)
+      GET /records/{record_id}/problems/{problem_id}
+      
+      Get one Problem for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Problem
+  
+  get_problems = c(self, *args, **kwargs)
+      GET /records/{record_id}/problems/
+      
+      Get all Problems for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Problem
+  
+  get_procedure = c(self, *args, **kwargs)
+      GET /records/{record_id}/procedures/{procedure_id}
+      
+      Get one Procedure for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Procedure
+  
+  get_procedures = c(self, *args, **kwargs)
+      GET /records/{record_id}/procedures/
+      
+      Get all Procedures for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Procedure
+  
+  get_scratchpad_data = c(self, *args, **kwargs)
+      GET /records/{record_id}/apps/{smart_app_id}/scratchpad
+      
+      Returns the scratchpad blob unicode data stored in the patient's account by a previous run of the owner app in the response body. An app can ready any other app's scratchpad. If not data is available the call will return an empty string.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#ScratchpadData
+  
+  get_social_history = c(self, *args, **kwargs)
+      GET /records/{record_id}/social_history
+      
+      Get Social History for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#SocialHistory
+  
+  get_surl_credentials(self)
+      Produces a token and secret for signing URLs.
+  
+  get_user = c(self, *args, **kwargs)
+      GET /users/{user_id}
+      
+      Get a single user by ID
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#User
+  
+  get_user_preferences = c(self, *args, **kwargs)
+      GET /users/{user_id}/apps/{smart_app_id}/preferences
+      
+      Returns the preferences blob unicode data stored in the user's account by a previous run of the app in the response body. If not data is available the call will return an empty string.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#UserPreferences
+  
+  get_vital_sign_set = c(self, *args, **kwargs)
+      GET /records/{record_id}/vital_sign_sets/{vital_sign_set_id}
+      
+      Get one Vital Sign Set for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#VitalSignSet
+  
+  get_vital_sign_sets = c(self, *args, **kwargs)
+      GET /records/{record_id}/vital_sign_sets/
+      
+      Get all Vital Sign Sets for a patient
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#VitalSignSet
+  
+  loop_over_records(self)
+      Iterator allowing background apps to loop through each patient
+      record in the SMArt container, e.g. to perform reporting or analytics.
+      For each patient record in the container, sets access tokens on the
+      SmartClient object and yields the new record_id.
+  
+  post(self, uri, body='', headers={}, content_type=None, **uri_params)
+      Make an OAuth-signed POST request to SMART Server.
+  
+  post_clinical_note = c(self, *args, **kwargs)
+      POST /records/{record_id}/clinical_notes/
+      
+      Post a Clinical Note for a patient. The body of the post should contain SMART RDF/XML serialization of the clinical note without the belongsTo predicate. The clinical note will be added to the collection of notes and the call will return a a copy of the posted data to indicate as successful posting.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#ClinicalNote
+  
+  put(self, uri, body='', headers={}, content_type=None, **uri_params)
+      Make an OAuth-signed PUT request to SMART Server.
+  
+  put_scratchpad_data = c(self, *args, **kwargs)
+      PUT /records/{record_id}/apps/{smart_app_id}/scratchpad
+      
+      Stores scratchpad data in the patient's account in the SMART container scoped to the current app. The HTTP request body represents the unicode-encoded data blob. The app chooses the best format for the data that makes sense for its use case (it is unstructured from SMART's perspective). If the data save was successful, the SMART server will respond with an HTTP 200 code and include the stored data in the response body. It is the app's responsibility to compare the response with the intended data content. If there are any discrepancies, then a concurrency problem occured while writing the data and the app should request a fresh copy of the scratchpad data stored on the server, merge it with its local copy and attempt writing it again.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#ScratchpadData
+  
+  put_user_preferences = c(self, *args, **kwargs)
+      PUT /users/{user_id}/apps/{smart_app_id}/preferences
+      
+      Stores preferences data in the user's account in the SMART container scoped to the current app. The HTTP request body represents the unicode-encoded data blob. The app chooses the best format for the data that makes sense for its use case (it is unstructured from SMART's perspective). If the data save was successful, the SMART server will respond with an HTTP 200 code and include the stored data in the response body. It is the app's responsibility to compare the response with the intended data content. If there are any discrepancies, then a concurrency problem occured while writing the data and the app should request a fresh copy of the preferences data stored on the server, merge it with its local copy and attempt writing it again.
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#UserPreferences
+  
+  request(self, uri, uri_params, *args, **kwargs)
+  
+  search_records = c(self, *args, **kwargs)
+      GET /records/search
+      
+      Get an RDF graph of sp:Demographics elements for all patients that match the query.  Matching treats family_name and given_name as the *beginning* of a name.  For instance given_name='J' matches /^J/i and thus matchs 'Josh'. Date of birth is an ISO8601 string like "2008-03-21"; gender is "male" or "female".  Gender, date_of_birth, zipcode, and medical_record_number must match exactly.
+              
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#Demographics
+  
+  search_users = c(self, *args, **kwargs)
+      GET /users/search
+      
+      Get users by name (or all users if blank)
+      
+      Returns RDF Graph containing:  http://smartplatforms.org/terms#User
+  
+  update_token(self, resource_token)
+      Update the resource token used by the client to sign requests.
+  
+  ----------------------------------------------------------------------
+  Data descriptors defined here:
+  
+  auth_redirect_url
+  
+  launch_url
+      Returns the start URL where the user can login and select a record
+  
+  record_id
+  
+  ----------------------------------------------------------------------
+  Methods inherited from oauth2.Client:
+  
+  set_signature_method(self, method)
+  
+  ----------------------------------------------------------------------
+  Methods inherited from oauth2.httplib2.Http:
+  
+  add_certificate(self, key, cert, domain)
+      Add a key and cert that will be used
+      any time a request requires authentication.
+  
+  add_credentials(self, name, password, domain='')
+      Add a name and password that will be used
+      any time a request requires authentication.
+  
+  clear_credentials(self)
+      Remove all the names and passwords
+      that are used for authentication
+  
+  ----------------------------------------------------------------------
+  Data descriptors inherited from oauth2.httplib2.Http:
+  
+  __dict__
+      dictionary for instance variables (if defined)
+  
+  __weakref__
+      list of weak references to the object (if defined)
+
