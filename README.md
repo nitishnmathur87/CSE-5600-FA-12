@@ -1,4 +1,4 @@
-CSE-5600-FA-12
+CSE-5600
 ==============
 
 Function Name: What it does
