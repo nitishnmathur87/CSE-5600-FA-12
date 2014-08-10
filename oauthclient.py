@@ -114,7 +114,7 @@ file in the common repo of SMART Platforms"""
 
 	def __init__(self, app_id, api_base, consumer_params, **state_vars):
 		if consumer_params.get('consumer_key') is None or consumer_params.get('consumer_secret') is None:
-			raise CError('Both consumer_secret and consumer_key are needed, only got :- %s' %consumer_params)
+			raise CError('Both consumer_secret and consumer_key are needed, only got :-to  %s' %consumer_params)
 
 		""" The OAuth consumer is a third party service that wants to access protected resources 
         from an OAuth service provider on behalf of an end user. It is kind of the OAuth client.
