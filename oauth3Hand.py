@@ -13,7 +13,7 @@ import common.rdf_tools.rdf_ontology
 import common.rdf_tools.util
 import flask
 import logging
-from filename import _CONFIG 
+from index import _CONFIG 
 from generate_api import SmartResponse, augment
 """Code is reused and refined from the existing repo of SMART platform """
 """Here the filename would be the app file name where the _CONFIG information is written
