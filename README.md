@@ -31,6 +31,14 @@ _requestRecordToken: requests a request token for a given patient id
 
 _exchangeToken: exchanges verifier for an access token and stores it in a session
 
+
+*******************************
+More detailed readme to follow
+*******************************
+
+
+
+
 Procedure for OAuth (3 way hand shake which includes the user authorization phase)
 
 Below is the procedure to call the functions in the app as defined in the oauth3WayShake.py file in the app file.
