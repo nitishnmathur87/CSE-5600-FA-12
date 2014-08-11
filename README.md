@@ -40,11 +40,17 @@ Firstly, The SMART app should have a root file named as index
 The index file should contain the _CONFIG dictionary that contains all the information such as 
 
 _CONFIG = {
+
 "url": "http://sandbox-api.smartplatforms.org", #specific to the smart container, or also known as the api_base
+
 "name": "SMART API",
+
 "app_id": "cse5600@cse.uconn.edu",
+
 "consumer_key": "cse5600@cse.uconn.edu",
+
 "consumer_secret": "secret"
+
 }
 
 Now, the first goal is to define the / URL for that app to respond in the SMART container. First check if there exists a patient id in the session. If not then call the initialization URL where a patient can be chosen by the user. This means that since there was no previously selected patient and since there is no id in the session it means that the app hasn't been used before or there were no patients selected before. For getting this selection page, the procedure behind this is that first it checks for consumer_key and consumer_secret in the _CONFIG that was declared in the file. If it is not found then an error is raised. The next test case is to see whether the api base is defined in the api dictionary. If not found then add and check if valid.
