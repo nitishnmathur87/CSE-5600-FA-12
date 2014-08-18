@@ -1,0 +1,52 @@
+
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX sp: <http://smartplatforms.org/terms#>
+    PREFIX spcode: <http://smartplatforms.org/terms/codes/>
+    PREFIX dcterms: <http://purl.org/dc/terms/>
+	
+	SELECT 
+    WHERE {
+		OPTIONAL { _:a0 sp:startDate ?sdate . }
+        
+        _:a1 sp:drugClassAllergen ?allergenclass .
+        OPTIONAL { ?allergenclass dcterms:title ?title . }
+		OPTIONAL { ?allergenclass sp:code ?code . 
+					OPTIONAL { ?code dcterms:title ?codetitle . }
+					OPTIONAL { ?code sp:system ?system . }
+					OPTIONAL { ?code dcterms:identifier ?identity . }
+				}
+		
+				
+		_:a2 sp:severity ?severe .
+		OPTIONAL { ?severe dcterms:title ?severetitle . }
+		OPTIONAL { ?severe sp:code ?severecode . 
+					OPTIONAL { ?severecode dcterms:title ?severecodetitle . }
+					OPTIONAL { ?severecode sp:system ?severecodesystem . }
+					OPTIONAL { ?severecode dcterms:identifier ?severecodeidentity . }
+				}
+		
+		_:a3 sp:allergicReaction ?allreaction .
+		OPTIONAL { ?allreaction dcterms:title ?allreactiontitle . }
+		OPTIONAL { ?allreaction sp:code ?allreactioncode . 
+					OPTIONAL { ?allreactioncode dcterms:title ?allreactiontitle . }
+					OPTIONAL { ?allreactioncode sp:system ?allreactionsystem . }
+					OPTIONAL { ?allreactioncode dcterms:identifier ?allreactionidentity . }
+				}
+				
+		_:a4 sp:category ?category .
+		OPTIONAL { ?category dcterms:title ?categorytitle . }
+		OPTIONAL { ?category sp:code ?categorycode . 
+					OPTIONAL { ?categorycode dcterms:title ?categorytitle . }
+					OPTIONAL { ?categorycode sp:system ?categorysystem . }
+					OPTIONAL { ?categorycode dcterms:identifier ?categoryidentity . }
+				}
+			
+		
+		_:a5 sp:drugAllergen ?allergen .
+        OPTIONAL { ?allergen dcterms:title ?title . }
+		OPTIONAL { ?allergen sp:code ?code . 
+					OPTIONAL { ?code dcterms:title ?codetitle . }
+					OPTIONAL { ?code sp:system ?system . }
+					OPTIONAL { ?code dcterms:identifier ?identity . }
+				}
+		}

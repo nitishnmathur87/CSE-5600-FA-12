@@ -1,0 +1,64 @@
+PREFIX v: <http://www.w3.org/2006/vcard/ns#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sp: <http://smartplatforms.org/terms#>
+PREFIX spcode: <http://smartplatforms.org/terms/codes/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+	
+	SELECT 
+    WHERE {
+	    _:a0 sp:Document ?document .
+        OPTIONAL { ?document dcterms:date ?date . }
+        OPTIONAL { ?document sp:fileName ?filename . }
+		OPTIONAL { ?document dcterms:title ?title . }
+		OPTIONAL { ?document dcterms:format ?format . 
+			OPTIONAL { ?format rdfs:label ?label . }
+		}
+		OPTIONAL { ?document sp:provider ?provider . 
+			OPTIONAL { ?provider v:n ?name . 
+				OPTIONAL { ?name v:given-name ?given . }
+				OPTIONAL { ?name v:family-name ?family . }
+			}
+		}
+		OPTIONAL { ?document sp:resource ?resource . 
+				OPTIONAL { ?resource sp:location ?location . }
+				OPTIONAL { ?resource sp:hash ?hash . 
+					OPTIONAL { ?hash sp:algorithm ?algorithm . }
+					OPTIONAL { ?hash sp:value ?value . }
+				}
+				OPTIONAL { ?resource sp:content ?resourcecontent . 
+					OPTIONAL { ?resourcecontent sp:encoding ?encoding . }
+					OPTIONAL { ?resourcecontent sp:value ?contentvalue . }
+				}
+			}
+				
+		OPTIONAL { ?document sp:fileSize ?filesize . 
+			OPTIONAL { ?filesize sp:value ?filevalue . }
+			OPTIONAL { ?filesize sp:unit ?unit . }
+		}
+					
+		OPTIONAL { ?document sp:documentType ?doctype . 
+			OPTIONAL { ?doctype sp:CodedValue ?codedvalue . 
+				OPTIONAL { ?codedvalue dcterms:title ?codedvaluetitle . }
+				OPTIONAL { ?codedvalue sp:code ?codedvaluecode . 
+					OPTIONAL { ?codedvaluecode spcode:DocumentType ?codedvaluecodeDocumentType . 
+						OPTIONAL { ?codedvaluecodeDocumentType dcterms:title ?codedvaluecodeDocumentTypeTitle . }
+						OPTIONAL { ?codedvaluecodeDocumentType sp:system ?codedvaluecodeDocumentTypeSystem . }
+						OPTIONAL { ?codedvaluecodeDocumentType dcterms:identifier ?codedvaluecodeDocumentTypeIdentity . }
+					}
+				}
+			}
+		}
+		OPTIONAL { ?document sp:documentType ?documentType . 
+			OPTIONAL { ?documentType sp:CodedValue ?documentTypeCodedValue . 
+				OPTIONAL { ?documentTypeCodedValue dcterms:title ?documentTypeCodedValueTitle . }
+				OPTIONAL { ?documentTypeCodedValue sp:code ?codedValueCode . 
+					OPTIONAL { ?codedValueCode spcode:DocumentType ?doc . 
+						OPTIONAL { ?doc dcterms:title ?doctitle . }
+						OPTIONAL { ?doc sp:system ?docsystem . }
+						OPTIONAL { ?doc dcterms:identifier ?docidentifier . }
+					}
+				}
+			}
+		}
+	}

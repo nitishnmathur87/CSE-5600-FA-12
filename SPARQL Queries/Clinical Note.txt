@@ -1,0 +1,29 @@
+PREFIX v: <http://www.w3.org/2006/vcard/ns#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sp: <http://smartplatforms.org/terms#>
+PREFIX spcode: <http://smartplatforms.org/terms/codes/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+	
+	SELECT 
+    WHERE {
+	    _:a0 sp:ClinicalNote ?clinicalNote .
+        OPTIONAL { ?clinicalNote dcterms:date ?date . }
+		OPTIONAL { ?clinicalNote dcterms:title ?title . }
+		OPTIONAL { ?clinicalNote dcterms:format ?format . 
+			OPTIONAL { ?format rdfs:label ?label . }
+		}
+		OPTIONAL { ?clinicalNote sp:provider ?provider . 
+			OPTIONAL { ?provider v:n ?name . 
+					OPTIONAL { ?name v:given-name ?given . }
+					OPTIONAL { ?name v:family-name ?family . }
+			}
+		}
+		OPTIONAL { ?clinicalNote sp:resource ?resource . 
+					OPTIONAL { ?resource sp:content ?content . 
+						OPTIONAL { ?content sp:encoding ?encoding . }
+						OPTIONAL { ?content sp:value ?value . }
+					}
+				}
+		
+	}

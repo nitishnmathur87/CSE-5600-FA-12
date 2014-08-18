@@ -1,0 +1,17 @@
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sp: <http://smartplatforms.org/terms#>
+PREFIX spcode: <http://smartplatforms.org/terms/codes/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+	
+	SELECT 
+    WHERE {
+	    _:a0 sp:allergyExclusionName ?allergyexclusion .
+        OPTIONAL { ?allergyexclusion dcterms:title ?title . }
+		OPTIONAL { ?allergyexclusion sp:code ?code . 
+					OPTIONAL { ?code dcterms:title ?codetitle . }
+					OPTIONAL { ?code sp:system ?system . }
+					OPTIONAL { ?code dcterms:identifier ?identity . }
+				}
+		OPTIONAL { _:a1 dcterms:date ?sdate . }
+	}
